@@ -1,2 +1,2 @@
 # accj_content
-Content for the acatcalledjack.co.uk website
+Content for the acatcalledjack.co.uk website.
