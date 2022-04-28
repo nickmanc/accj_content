@@ -105,87 +105,81 @@
     </div>
 </section>
 <!-- Footer -->
-<!--<section id="footer">-->
-<!--    &lt;!&ndash; subscription form  &ndash;&gt;-->
-<!--    <div class="container">-->
-<!--        <header class="major">-->
-<!--            <h2>Subscribe</h2>-->
-<!--        </header>-->
+<section id="footer">
+    <!-- subscription form  -->
+    <div class="container">
+        <header class="major">
+            <h2>Subscribe</h2>
+        </header>
 
-<!--        <div class="form-row" id="subscribe">-->
-<!--            <form>-->
-<!--                <label hidden for="email">Enter your email to subscribe</label>-->
-<!--                <input style="margin: 0 0 1em 0;" type="email" name="email" id="email" placeholder="Enter your email" required>-->
-<!--                <button type="submit" class="primary" value="Subscribe">Subscribe</button>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--        <div id="subscription-status" hidden="true">-->
-<!--            <label id="subscription-status-message"></label>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <script>-->
-<!--        const form = document.querySelector('form')-->
-<!--        form.addEventListener('submit', event =>-->
-<!--        {-->
-<!--            event.preventDefault()-->
-<!--            const {name, email, message} = event.target-->
-<!--            console.log('email: ', email.value)-->
-<!--            const endpoint = "https://api.acatcalledjack.co.uk/subscriptionmanager";-->
-<!--            const body = JSON.stringify({-->
-<!--                body: {email: email.value}-->
-<!--            });-->
-<!--            console.log(body)-->
-<!--            const requestOptions = {-->
-<!--                method: "POST",-->
-<!--                body-->
-<!--            };-->
-<!--            fetch(endpoint, requestOptions)-->
-<!--            .then((response) =>-->
-<!--            {-->
-<!--                if(!response.ok)-->
-<!--                {-->
-<!--                    throw new Error("Error in fetch");-->
-<!--                }-->
-<!--                return response.json();-->
-<!--            })-->
-<!--            .then((response) =>-->
-<!--            {-->
-<!--                document.getElementById("subscription-status-message").innerText =-->
-<!--                        JSON.parse(response.body).message-->
-<!--                document.getElementById("subscription-status-message").style =-->
-<!--                        "color:green; font-weight: bold;";-->
-<!--                document.getElementById("subscribe").hidden = true;-->
-<!--                document.getElementById("subscription-status").hidden = false;-->
-<!--            })-->
-<!--            .catch((error) =>-->
-<!--            {-->
-<!--                console.log('ERROR:', error)-->
-<!--                document.getElementById("subscription-status-message").innerText =-->
-<!--                        "Error, failed to request subscription";-->
-<!--                document.getElementById("subscription-status-message").style =-->
-<!--                        "color:red; font-weight: bold;";-->
-<!--                document.getElementById("subscribe").hidden = true;-->
-<!--                document.getElementById("subscription-status").hidden = false;-->
-<!--            });-->
-<!--        })-->
-<!--    </script>-->
-<!--    <footer>-->
-<!--        <ul class="icons">-->
-<!--            <li><a href="www.twitter.com" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>-->
-<!--            <li><a href="www.facebook.com" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>-->
-<!--            <li><a href="www.instagram.com" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>-->
-<!--            <li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>-->
-<!--        </ul>-->
-<!--        <ul class="copyright">-->
-<!--            <li>&copy;-->
-<!--                <script>document.write(new Date().getFullYear())</script>-->
-<!--                Jack-->
-<!--            </li>-->
-<!--            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>-->
-<!--            &lt;!&ndash;<li>Demo Images: <a href="http://unsplash.com">Unsplash</a></li>&ndash;&gt;-->
-<!--        </ul>-->
-<!--    </footer>-->
-<!--</section>-->
+        <div class="form-row" id="subscribe">
+            <form>
+                <label hidden for="email">Enter your email to subscribe</label>
+                <input style="margin: 0 0 1em 0;" type="email" name="email" id="email" placeholder="Enter your email" required>
+                <button type="submit" class="primary" value="Subscribe">Subscribe</button>
+            </form>
+        </div>
+        <div id="subscription-status" hidden="true">
+            <label id="subscription-status-message"></label>
+        </div>
+    </div>
+    <script>
+        const form = document.querySelector('form')
+        form.addEventListener('submit', event =>
+        {
+            event.preventDefault()
+            const {name, email, message} = event.target
+            const endpoint = "https://api.acatcalledjack.co.uk/subscriptionmanager/subscribe";
+            const body = JSON.stringify({"email": email.value});
+            const requestOptions = {
+                method: "POST",
+                body
+            };
+            fetch(endpoint, requestOptions)
+            .then((response) =>
+            {
+                if(!response.ok)
+                {
+                    throw new Error("Error in fetch");
+                }
+                return response.json();
+            })
+            .then((response) =>
+            {
+                document.getElementById("subscription-status-message").innerText = response.message
+                document.getElementById("subscription-status-message").style =
+                        "color:green; font-weight: bold;";
+                document.getElementById("subscribe").hidden = true;
+                document.getElementById("subscription-status").hidden = false;
+            })
+            .catch((error) =>
+            {
+                console.log('ERROR:', error)
+                document.getElementById("subscription-status-message").innerText =
+                        "Error, failed to request subscription";
+                document.getElementById("subscription-status-message").style =
+                        "color:red; font-weight: bold;";
+                document.getElementById("subscribe").hidden = true;
+                document.getElementById("subscription-status").hidden = false;
+            });
+        })
+    </script>
+    <footer>
+        <ul class="icons">
+            <li><a href="www.twitter.com" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="www.facebook.com" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+            <li><a href="www.instagram.com" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+        <ul class="copyright">
+            <li>&copy;
+                <script>document.write(new Date().getFullYear())</script>
+                Jack
+            </li>
+            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+    </footer>
+</section>
 
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
